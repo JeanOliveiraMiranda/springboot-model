@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CategoriaEventoResponse {
 
-    private String NomeCategoria;
+    private Integer id;
 
-    private Integer IdCategoriaEvento;
+    private String nome;
 
 }

@@ -1,5 +1,6 @@
 package com.study.coffee.domain.dto.response;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,10 +10,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StatusEventoResponse {
+public class ParticipacaoResponse {
 
-    private String id;
-    
-    private String nome;
+    private Integer id;
 
+    private Integer id_evento;
+
+    private String login;
+
+    private short flag;
+
+    private Integer nota;
+
+    private String comentario;
 }

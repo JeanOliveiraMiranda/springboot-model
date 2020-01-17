@@ -2,7 +2,6 @@ package com.study.coffee.domain.dto.response;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,22 +14,22 @@ import lombok.NoArgsConstructor;
 
 public class EventoResponse {
 
-    private int IdEvento;
+    private Integer id;
 
-    private int IdEventoStatus;
+    private Integer id_evento_status;
 
-    private int IdCategoriaEvento;
+    private Integer id_categoria_evento;
 
-    private String Nome;
+    private String nome;
 
-    private Date DataHoraInicio;
+    private Date data_inicio;
 
-    private Date DataHoraFim;
+    private Date data_fim;
 
-    private String Local;
+    private String local;
 
-    private String Descricao;
+    private String descricao;
 
-    private int LimiteVagas;
+    private Integer limite_vagas;
 
 }

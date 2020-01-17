@@ -11,12 +11,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CategoriaEventoCreateRequest {
+public class ParticipacaoCreateRequest {
 
     @NotEmpty()
-    private Integer id;
+    private Integer id_evento;
 
     @NotEmpty()
-    private String nome;
+    private String login;
 
+    @NotEmpty()
+    private short flag;
+
+    @NotEmpty()
+    private Integer nota;
+
+    @NotEmpty()
+    private String comentario;
 }

@@ -16,27 +16,27 @@ import lombok.NoArgsConstructor;
 public class EventoCreateRequest {
 
     @NotEmpty()
-    private int IdEventoStatus;
+    private Integer id_evento_status;
 
     @NotEmpty()
-    private int IdCategoriaEvento;
+    private Integer id_categoria_evento;
 
     @NotEmpty()
-    private String Nome;
+    private String nome;
 
     @NotEmpty()
-    private Date DataHoraInicio;
+    private Date data_inicio;
 
     @NotEmpty()
-    private Date DataHoraFim;
+    private Date data_fim;
 
     @NotEmpty()
-    private String Local;
+    private String local;
 
     @NotEmpty()
-    private String Descricao;
+    private String descricao;
 
     @NotEmpty()
-    private int LimiteVagas;
+    private Integer limite_vagas;
 
 }

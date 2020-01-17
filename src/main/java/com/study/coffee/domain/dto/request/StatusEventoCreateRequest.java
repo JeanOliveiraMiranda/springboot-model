@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StatusEventoCreateRequest {
 
-    @NotEmpty(message = "NomeStatus is required")
-    private String NomeStatus;
+    @NotEmpty(message = "nome is required")
+    private String nome;
 
     @NotEmpty(message = "IdEventoStatus status is required")
-    private String IdEventoStatus;
+    private String id;
 
 }
