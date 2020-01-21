@@ -16,7 +16,4 @@ public class StatusEventoCreateRequest {
     @NotEmpty(message = "nome is required")
     private String nome;
 
-    @NotEmpty(message = "IdEventoStatus status is required")
-    private String idStatusEvento;
-
 }

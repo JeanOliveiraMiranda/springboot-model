@@ -37,9 +37,26 @@ public class StatusEventoService {
         return statusEventoRepository.listDistinct();
     }
 
-    public StatusEvento put(Integer id, StatusEvento model ) {
-        Optional<StatusEvento> res = statusEventoRepository.findById(id);
-        return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
+    public StatusEvento update(Integer id, StatusEvento model) {
+        Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
+
+        model.setIdStatusEvento(id);
+        model.setNome(model.getNome().toUpperCase());
+
+        statusEventoRepository.save(model);
+
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+
+    }
+
+    
+    public StatusEvento deleteStatusEvento(Integer id) {
+        Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
+
+        statusEventoRepository.deleteById(id);
+
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+
     }
 
 }

@@ -28,13 +28,34 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-	public Client findById(Integer id) {
+    public Client findById(Integer id) {
         Optional<Client> client = clientRepository.findById(id);
         return client.orElseThrow(() -> new DataNotFoundException("Client Not found"));
-	}
+    }
 
-	public  List<String> listDistinct() {
+    public Client delete(Integer id) {
+
+        Optional<Client> client = clientRepository.findById(id);
+
+        // erro 500 quando não encontra o cliente
+
+        clientRepository.deleteById(id);
+
+        return client.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+    }
+
+    public Client update(Integer id, Client model) {
+        Optional<Client> client = clientRepository.findById(id);
+
+        model.setId(id);
+
+        clientRepository.save(model);
+
+        return client.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+
+    }
+
+    public List<String> listDistinct() {
         return clientRepository.listDistinct();
-	}
-
+    }
 }

@@ -19,5 +19,4 @@ public class StatusEvento {
 
     @Column(name = "NomeStatus", nullable = false, length = 250)
     private String nome;
-
 }
