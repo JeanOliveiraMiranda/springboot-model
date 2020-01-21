@@ -29,12 +29,34 @@ public class ParticipacaoService {
     }
 
     public Participacao findById(Integer id) {
-        Optional<Participacao> res = participacaoRepository.findById(id);
-        return res.orElseThrow(() -> new DataNotFoundException("Participacao Not found"));
+        Optional<Participacao> participacao = participacaoRepository.findById(id);
+        return participacao.orElseThrow(() -> new DataNotFoundException("Participacao Not found"));
     }
 
     public List<String> listDistinct() {
         return participacaoRepository.listDistinct();
+    }
+
+    public Participacao update(Integer id, Participacao model) {
+        Optional<Participacao> participacao = participacaoRepository.findById(id);
+
+        // atualiza o model
+        model.setIdParticipacao(id);
+
+        // atualiza o banco de dados
+        participacaoRepository.save(model);
+
+        // retorna participacao
+        return participacao.orElseThrow(() -> new DataNotFoundException("Participacao not found"));
+    }
+
+    public Participacao deleteParticipacao(Integer id){
+        // verifica se id existe
+        Optional<Participacao> participacao = participacaoRepository.findById(id);
+
+        participacaoRepository.deleteById(id);
+
+        return participacao.orElseThrow(() -> new DataNotFoundException("Participação não encontrada"));
     }
 
 }

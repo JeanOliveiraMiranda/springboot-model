@@ -37,4 +37,23 @@ public class CategoriaEventoService {
         return categoriaEventoRepository.listDistinct();
     }
 
+    public CategoriaEvento update(Integer id, CategoriaEvento model) {
+        
+        Optional<CategoriaEvento> categoriaEvento = categoriaEventoRepository.findById(id);
+
+        model.setIdCategoriaEvento(id);
+
+        categoriaEventoRepository.save(model);
+
+        return categoriaEvento.orElseThrow(() -> new DataNotFoundException("CategoriaEvento Not found"));
+
+    }
+
+    public CategoriaEvento deleteCategoriaEvento(Integer id){
+        Optional<CategoriaEvento> categoriaEvento = categoriaEventoRepository.findById(id);
+
+        categoriaEventoRepository.deleteById(id);
+
+        return categoriaEvento.orElseThrow(() -> new DataNotFoundException("CategoriaEvento Not found"));
+    }
 }

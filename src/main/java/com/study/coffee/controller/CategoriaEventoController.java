@@ -13,12 +13,15 @@ import com.study.coffee.service.CategoriaEventoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/evento/categoria")
@@ -56,6 +59,19 @@ public class CategoriaEventoController {
         CategoriaEvento categoriaEvento = categoriaEventoService.create(mapper.fromDto(model));
 
         return ResponseEntity.ok(mapper.toDto(categoriaEvento));
+    }
+    @PutMapping(value="/{id}")
+    public ResponseEntity<CategoriaEventoResponse> put(@PathVariable Integer id, @RequestBody CategoriaEventoCreateRequest model) {
+        //TODO: process PUT request
+        
+        CategoriaEvento categoriaEvento = categoriaEventoService.update(id, mapper.fromDto(model));
+        
+        return ResponseEntity.ok(mapper.toDto(categoriaEvento));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<CategoriaEventoResponse> delete(@PathVariable Integer id){
+        return ResponseEntity.ok(mapper.toDto(categoriaEventoService.deleteCategoriaEvento(id)));
     }
 
 }

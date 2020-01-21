@@ -13,12 +13,15 @@ import com.study.coffee.service.ParticipacaoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/evento/participacao")
@@ -58,4 +61,18 @@ public class ParticipacaoController {
         return ResponseEntity.ok(mapper.toDto(participacao));
     }
 
+    @PutMapping(value="/{id}")
+    public ResponseEntity<ParticipacaoResponse> put(@PathVariable Integer id, @RequestBody ParticipacaoCreateRequest model) {
+        //TODO: process PUT request
+        Participacao participacao = participacaoService.update(id, mapper.fromDto(model));
+        
+        return ResponseEntity.ok(mapper.toDto(participacao));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<ParticipacaoResponse> delete(@PathVariable Integer id) {
+    
+        return ResponseEntity.ok(mapper.toDto(participacaoService.deleteParticipacao(id)));
+        
+    }
 }

@@ -40,16 +40,22 @@ public class StatusEventoService {
     public StatusEvento update(Integer id, StatusEvento model) {
         Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
 
-        model.setIdStatusEvento(id);
-        model.setNome(model.getNome().toUpperCase());
+        String nome = model.getNome();
 
+        // Regra do negócio se for maior que 3 o nome, vira UpperCase
+        if (nome.length() > 3) {
+            model.setNome(model.getNome().toUpperCase());
+        } else {
+            model.setNome(model.getNome());
+        }
+
+        // seta o id do Status pelo PathVariable que recebe no controller
+        model.setIdStatusEvento(id);
         statusEventoRepository.save(model);
 
-        return statusEvento.orElseThrow(() -> new DataNotFoundException("Client Not found"));
-
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
     }
 
-    
     public StatusEvento deleteStatusEvento(Integer id) {
         Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
 

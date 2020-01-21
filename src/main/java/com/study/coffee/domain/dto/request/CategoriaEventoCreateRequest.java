@@ -14,9 +14,6 @@ import lombok.NoArgsConstructor;
 public class CategoriaEventoCreateRequest {
 
     @NotEmpty()
-    private Integer idCategoriaEvento;
-
-    @NotEmpty()
     private String nome;
 
 }
