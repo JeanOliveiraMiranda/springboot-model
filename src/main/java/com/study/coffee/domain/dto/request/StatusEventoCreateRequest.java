@@ -17,6 +17,6 @@ public class StatusEventoCreateRequest {
     private String nome;
 
     @NotEmpty(message = "IdEventoStatus status is required")
-    private String id;
+    private String idStatusEvento;
 
 }

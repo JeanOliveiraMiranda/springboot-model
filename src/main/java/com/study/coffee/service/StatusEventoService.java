@@ -37,4 +37,9 @@ public class StatusEventoService {
         return statusEventoRepository.listDistinct();
     }
 
+    public StatusEvento put(Integer id, StatusEvento model ) {
+        Optional<StatusEvento> res = statusEventoRepository.findById(id);
+        return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
+    }
+
 }

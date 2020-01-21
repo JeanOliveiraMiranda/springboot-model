@@ -2,6 +2,7 @@ package com.study.coffee.domain.mapper;
 
 import com.study.coffee.domain.dto.request.ParticipacaoCreateRequest;
 import com.study.coffee.domain.dto.response.ParticipacaoResponse;
+// import com.study.coffee.domain.entities.Evento;
 import com.study.coffee.domain.entities.Participacao;
 
 import org.modelmapper.ModelMapper;
@@ -25,5 +26,16 @@ public class ParticipacaoMapper {
     public Participacao fromDto(ParticipacaoCreateRequest input) {
         return mapper.map(input, Participacao.class);
     }
+
+    // public Participacao fromDto(ParticipacaoCreateRequest input) {
+
+    // Participacao model = mapper.map(input, Participacao.class);
+    // Evento evento = new Evento();
+
+    // evento.setIdEvento(input.getIdEvento());
+    // model.setIdEvento(evento);
+
+    // return model;
+    // }
 
 }

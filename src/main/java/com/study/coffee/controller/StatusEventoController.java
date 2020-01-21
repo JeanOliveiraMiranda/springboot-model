@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/evento/status")
 public class StatusEventoController {
@@ -57,5 +58,4 @@ public class StatusEventoController {
 
         return ResponseEntity.ok(mapper.toDto(statusEvento));
     }
-
 }

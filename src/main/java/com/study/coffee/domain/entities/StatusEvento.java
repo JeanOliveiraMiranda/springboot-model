@@ -14,10 +14,10 @@ public class StatusEvento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdEventoStatus" )
-    private Integer id;
+    @Column(name = "IdEventoStatus")
+    private Integer idStatusEvento;
 
     @Column(name = "NomeStatus", nullable = false, length = 250)
     private String nome;
 
-} 
+}

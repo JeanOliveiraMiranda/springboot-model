@@ -3,6 +3,8 @@ package com.study.coffee.domain.dto.request;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,20 +17,20 @@ import lombok.NoArgsConstructor;
 
 public class EventoCreateRequest {
 
-    @NotEmpty()
-    private Integer id_evento_status;
+    @NotNull()
+    private Integer idStatusEvento;
 
-    @NotEmpty()
-    private Integer id_categoria_evento;
+    @NotNull()
+    private Integer idCategoriaEvento;
 
     @NotEmpty()
     private String nome;
 
-    @NotEmpty()
-    private Date data_inicio;
+    @NotNull()
+    private Date dataInicio;
 
-    @NotEmpty()
-    private Date data_fim;
+    @NotNull()
+    private Date dataFim;
 
     @NotEmpty()
     private String local;
@@ -36,7 +38,7 @@ public class EventoCreateRequest {
     @NotEmpty()
     private String descricao;
 
-    @NotEmpty()
-    private Integer limite_vagas;
+    @NotNull()
+    private Integer limiteVagas;
 
 }

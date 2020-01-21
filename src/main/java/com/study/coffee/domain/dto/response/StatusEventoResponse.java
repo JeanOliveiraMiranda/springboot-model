@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StatusEventoResponse {
 
-    private String id;
+    private String idStatusEvento;
     
     private String nome;
 

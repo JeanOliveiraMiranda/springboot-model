@@ -2,6 +2,9 @@ package com.study.coffee.domain.dto.response;
 
 import java.util.Date;
 
+import com.study.coffee.domain.entities.CategoriaEvento;
+import com.study.coffee.domain.entities.StatusEvento;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,22 +17,22 @@ import lombok.NoArgsConstructor;
 
 public class EventoResponse {
 
-    private Integer id;
+    private Integer idEvento;
 
-    private Integer id_evento_status;
+    private StatusEvento idStatusEvento;
 
-    private Integer id_categoria_evento;
+    private CategoriaEvento idCategoriaEvento;
 
     private String nome;
 
-    private Date data_inicio;
+    private Date dataInicio;
 
-    private Date data_fim;
+    private Date dataFim;
 
     private String local;
 
     private String descricao;
 
-    private Integer limite_vagas;
+    private Integer limiteVagas;
 
 }

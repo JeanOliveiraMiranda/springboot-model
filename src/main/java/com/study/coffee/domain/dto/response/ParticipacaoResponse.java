@@ -1,5 +1,6 @@
 package com.study.coffee.domain.dto.response;
 
+import com.study.coffee.domain.entities.Evento;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,9 +13,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ParticipacaoResponse {
 
-    private Integer id;
+    private Integer idParticipacao;
 
-    private Integer id_evento;
+    private Evento idEvento;
 
     private String login;
 

@@ -55,6 +55,8 @@ public class EventoController {
 
         Evento statusEvento = eventoService.create(mapper.fromDto(model));
 
+        // StatusEvento.setCategoriaEvento(eventoService.findById(model.getId_categoria_evento()));
+
         return ResponseEntity.ok(mapper.toDto(statusEvento));
     }
 

@@ -1,6 +1,11 @@
 package com.study.coffee.domain.dto.request;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.study.coffee.domain.entities.Evento;
+
+// import com.study.coffee.domain.entities.Evento;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,16 +18,16 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ParticipacaoCreateRequest {
 
-    @NotEmpty()
-    private Integer id_evento;
+    @NotNull()
+    private Evento idEvento;
 
     @NotEmpty()
     private String login;
 
-    @NotEmpty()
+    @NotNull()
     private short flag;
 
-    @NotEmpty()
+    @NotNull()
     private Integer nota;
 
     @NotEmpty()

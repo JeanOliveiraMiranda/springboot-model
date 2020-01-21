@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -15,10 +17,11 @@ public class Participacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdParticipacao")
-    private Integer id;
+    private Integer idParticipacao;
 
-    @Column(name = "IdEvento", nullable = false)
-    private Integer id_evento;
+    @ManyToOne
+    @JoinColumn(name = "IdEvento", nullable = false)
+    private Evento idEvento;
 
     @Column(name = "LoginParticipante", nullable = false, length = 250)
     private String login;

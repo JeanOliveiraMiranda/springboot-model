@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 import lombok.Data;
 
@@ -18,24 +20,24 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdEvento")
-    private Integer id;
+    private Integer idEvento;
 
-    // @OneToMany(mappedBy = "StatusEvento")
-    @Column(name = "IdEventoStatus", nullable = false)
-    private Integer id_evento_status;
+    @ManyToOne
+    @JoinColumn(name="IdEventoStatus", nullable = false)
+    private StatusEvento idStatusEvento;
 
-    // @OneToMany(mappedBy = "CategoriaEvento")
-    @Column(name = "IdCategoriaEvento", nullable = false)
-    private Integer id_categoria_evento;
+    @ManyToOne
+    @JoinColumn(name="IdCategoriaEvento", nullable = false)
+    private CategoriaEvento idCategoriaEvento;
 
     @Column(name = "Nome", nullable = false, length = 250)
     private String nome;
 
     @Column(name = "DataHoraInicio", nullable = false)
-    private Date data_inicio;
+    private Date dataInicio;
 
     @Column(name = "DataHoraFim", nullable = false)
-    private Date data_fim;
+    private Date dataFim;
 
     @Column(name = "Local", nullable = false, length = 250)
     private String local;
@@ -44,6 +46,6 @@ public class Evento {
     private String descricao;
 
     @Column(name="LimiteVagas", nullable = false)
-    private Integer limite_vagas;
+    private Integer limiteVagas;
 
 }
