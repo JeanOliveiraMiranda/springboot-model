@@ -63,7 +63,6 @@ public class ParticipacaoController {
 
     @PutMapping(value="/{id}")
     public ResponseEntity<ParticipacaoResponse> put(@PathVariable Integer id, @RequestBody ParticipacaoCreateRequest model) {
-        //TODO: process PUT request
         Participacao participacao = participacaoService.update(id, mapper.fromDto(model));
         
         return ResponseEntity.ok(mapper.toDto(participacao));

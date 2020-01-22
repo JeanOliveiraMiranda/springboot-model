@@ -5,6 +5,11 @@ import java.util.Date;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.study.coffee.domain.validators.DataInicioRule;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,25 +22,30 @@ import lombok.NoArgsConstructor;
 
 public class EventoCreateRequest {
 
+    @Value(value = "1")
     @NotNull()
     private Integer idStatusEvento;
 
     @NotNull()
     private Integer idCategoriaEvento;
 
-    @NotEmpty()
+    @Autowired
+    @NotEmpty(message = "O atributo nome é obrigatório")
     private String nome;
 
-    @NotNull()
+    @DataInicioRule
+    @NotNull(message = "O atributo dataInicio é obrigatório")
     private Date dataInicio;
 
-    @NotNull()
+    @NotNull(message = "O atributo dataFim é obrigatório")
     private Date dataFim;
 
-    @NotEmpty()
+    @Autowired
+    @NotEmpty(message = "O atributo local é obrigatório")
     private String local;
 
-    @NotEmpty()
+    @Autowired
+    @NotEmpty(message = "O atributo descricao é obrigatório")
     private String descricao;
 
     @NotNull()

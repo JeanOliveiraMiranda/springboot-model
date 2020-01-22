@@ -21,7 +21,7 @@ public class ParticipacaoCreateRequest {
     @NotNull()
     private Evento idEvento;
 
-    @NotEmpty()
+    @NotEmpty(message = "O atributo login é obrigatório")
     private String login;
 
     @NotNull()
@@ -30,6 +30,6 @@ public class ParticipacaoCreateRequest {
     @NotNull()
     private Integer nota;
 
-    @NotEmpty()
+    @NotEmpty(message = "O atributo comentario é obrigatório")
     private String comentario;
 }

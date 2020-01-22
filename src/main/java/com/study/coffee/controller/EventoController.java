@@ -13,12 +13,15 @@ import com.study.coffee.service.EventoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/evento")
@@ -53,11 +56,23 @@ public class EventoController {
     @PostMapping
     public ResponseEntity<EventoResponse> post(@Valid @RequestBody EventoCreateRequest model) {
 
-        Evento statusEvento = eventoService.create(mapper.fromDto(model));
+        Evento evento = eventoService.create(mapper.fromDto(model));
 
         // StatusEvento.setCategoriaEvento(eventoService.findById(model.getId_categoria_evento()));
 
-        return ResponseEntity.ok(mapper.toDto(statusEvento));
+        return ResponseEntity.ok(mapper.toDto(evento));
+    }
+
+    @PutMapping(value="/{id}")
+    public ResponseEntity<EventoResponse> put(@PathVariable Integer id, @RequestBody EventoCreateRequest model) {
+        Evento evento = eventoService.updateEvento(id, mapper.fromDto(model));
+
+        return ResponseEntity.ok(mapper.toDto(evento));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<EventoResponse> delete(@PathVariable Integer id){
+        return ResponseEntity.ok(mapper.toDto(eventoService.deleteEvento(id)));
     }
 
 }

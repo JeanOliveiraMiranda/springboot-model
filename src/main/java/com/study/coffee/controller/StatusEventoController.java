@@ -64,7 +64,6 @@ public class StatusEventoController {
 
     @PutMapping(value="/{id}")
     public ResponseEntity<StatusEventoResponse> put(@PathVariable Integer id, @RequestBody StatusEventoCreateRequest model) {
-        //TODO: process PUT request
         StatusEvento statusEvento = statusEventoService.update(id, mapper.fromDto(model));
         
         return ResponseEntity.ok(mapper.toDto(statusEvento));
@@ -72,7 +71,6 @@ public class StatusEventoController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<StatusEventoResponse> delete(@PathVariable Integer id) {
-        //TODO: process PUT request
         return ResponseEntity.ok(mapper.toDto(statusEventoService.deleteStatusEvento(id)));
 
     }

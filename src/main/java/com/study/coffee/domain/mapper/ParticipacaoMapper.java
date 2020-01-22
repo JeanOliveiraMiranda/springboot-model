@@ -26,16 +26,4 @@ public class ParticipacaoMapper {
     public Participacao fromDto(ParticipacaoCreateRequest input) {
         return mapper.map(input, Participacao.class);
     }
-
-    // public Participacao fromDto(ParticipacaoCreateRequest input) {
-
-    // Participacao model = mapper.map(input, Participacao.class);
-    // Evento evento = new Evento();
-
-    // evento.setIdEvento(input.getIdEvento());
-    // model.setIdEvento(evento);
-
-    // return model;
-    // }
-
 }

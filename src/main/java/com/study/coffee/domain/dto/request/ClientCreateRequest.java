@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ClientCreateRequest {
 
-    @NotEmpty(message = "name is required")
+    @NotEmpty(message = "O atributo name é obrigatório")
     private String name;
 
-    @NotEmpty(message = "phone is required")
+    @NotEmpty(message = "O atributo phone é obrigatório")
     @Phone(message = "phone is invalid")
     private String phone;
 

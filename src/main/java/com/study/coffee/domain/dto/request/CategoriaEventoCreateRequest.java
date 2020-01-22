@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CategoriaEventoCreateRequest {
 
-    @NotEmpty()
+    @NotEmpty(message = "O atributo nome é obrigatório")
     private String nome;
 
 }

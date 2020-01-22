@@ -62,7 +62,6 @@ public class CategoriaEventoController {
     }
     @PutMapping(value="/{id}")
     public ResponseEntity<CategoriaEventoResponse> put(@PathVariable Integer id, @RequestBody CategoriaEventoCreateRequest model) {
-        //TODO: process PUT request
         
         CategoriaEvento categoriaEvento = categoriaEventoService.update(id, mapper.fromDto(model));
         
