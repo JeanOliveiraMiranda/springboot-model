@@ -1,10 +1,12 @@
 package com.study.coffee.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.study.coffee.domain.entities.CategoriaEvento;
 import com.study.coffee.domain.entities.Evento; // ENTIDADE
 import com.study.coffee.repository.EventoRepository; // REPOSITÓRIO
 import com.study.coffee.exception.DataNotFoundException;
@@ -27,8 +29,6 @@ public class EventoService {
         Date dataInicio = model.getDataInicio();
         Date dataFim = model.getDataFim();
 
-        
-        
         // Função que retorna se a dataFim está no mesmo dia -- LÓGICA DATAFIM
         Boolean isValid = dataFimMesmoDia(dataFim, dataInicio);
 
@@ -86,10 +86,15 @@ public class EventoService {
         return evento.orElseThrow(() -> new DataNotFoundException("Evento" + id + "not encontrado"));
     }
 
-    public List<Evento> filtrarCategoriaData(Integer idEvento, Date dataInicio){
+    public List<Evento> listByIdCategoria(CategoriaEvento idCategoriaEvento, Date dataInicio) {
 
-        return eventoRepository.findByDataInicio(dataInicio);
-   
+        List<Evento> eventoByCategoria = eventoRepository.findByIdCategoriaEvento(idCategoriaEvento);
+        List<Evento> eventoByData = eventoRepository.findByDataInicio(dataInicio);
+
+        List<Evento> newList = new ArrayList<Evento>(eventoByCategoria);
+        newList.addAll(eventoByData);
+
+        return newList;
     }
 
     public static Boolean dataFimMesmoDia(Date dataFim, Date dataInicio) {

@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 import lombok.Data;
 
 @Data
@@ -19,15 +18,15 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdEvento")
+    @Column(name = "IdEvento", nullable = false, unique = true)
     private Integer idEvento;
 
     @ManyToOne
-    @JoinColumn(name="IdEventoStatus", nullable = false)
+    @JoinColumn(name = "IdEventoStatus", nullable = false)
     private StatusEvento idStatusEvento;
 
     @ManyToOne
-    @JoinColumn(name="IdCategoriaEvento", nullable = false)
+    @JoinColumn(name = "IdCategoriaEvento", nullable = false)
     private CategoriaEvento idCategoriaEvento;
 
     @Column(name = "Nome", nullable = false, length = 250)
@@ -45,7 +44,7 @@ public class Evento {
     @Column(name = "Descricao", nullable = false, length = 1000)
     private String descricao;
 
-    @Column(name="LimiteVagas", nullable = false)
+    @Column(name = "LimiteVagas", nullable = false)
     private Integer limiteVagas;
 
 }

@@ -5,8 +5,6 @@ import javax.validation.constraints.NotNull;
 
 import com.study.coffee.domain.entities.Evento;
 
-// import com.study.coffee.domain.entities.Evento;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ParticipacaoCreateRequest {
-
+    
     @NotNull()
     private Evento idEvento;
 
