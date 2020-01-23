@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class ParticipacaoCreateRequest {
     
     @NotNull()
-    private Evento idEvento;
+    private Integer idEvento;
 
     @NotEmpty(message = "O atributo login é obrigatório")
     private String login;
