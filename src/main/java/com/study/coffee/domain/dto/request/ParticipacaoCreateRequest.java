@@ -3,7 +3,6 @@ package com.study.coffee.domain.dto.request;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.study.coffee.domain.entities.Evento;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -3,7 +3,6 @@ package com.study.coffee.domain.dto.request;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -51,8 +50,6 @@ public class ClientCreateRequestTest {
 
     @Test
     public void should_BeValid() {
-
-        Date data = new Date();
 
         ClientCreateRequest createDto = ClientCreateRequest.builder().name("Jean").phone("11941115513").build();
 

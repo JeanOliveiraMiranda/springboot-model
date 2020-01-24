@@ -2,8 +2,6 @@ package com.study.coffee.domain.mapper;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
 import com.study.coffee.configuration.MapperConfig;
 import com.study.coffee.domain.dto.request.ClientCreateRequest;
 import com.study.coffee.domain.dto.response.ClientResponse;
