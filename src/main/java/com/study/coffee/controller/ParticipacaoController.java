@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.study.coffee.domain.dto.request.InscricaoCreateRequest;
 import com.study.coffee.domain.dto.request.ParticipacaoCreateRequest;
 import com.study.coffee.domain.dto.response.ParticipacaoResponse;
 import com.study.coffee.domain.entities.Participacao;
+import com.study.coffee.domain.mapper.InscricaoMapper;
 import com.study.coffee.domain.mapper.ParticipacaoMapper;
 import com.study.coffee.service.ParticipacaoService;
 
@@ -22,12 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
-@RequestMapping("/evento/participacao")
+@RequestMapping("/participacao")
 public class ParticipacaoController {
 
     private final ParticipacaoService participacaoService;
+
     private final ParticipacaoMapper mapper;
 
     @Autowired
@@ -56,22 +58,31 @@ public class ParticipacaoController {
     @PostMapping
     public ResponseEntity<ParticipacaoResponse> post(@Valid @RequestBody ParticipacaoCreateRequest model) {
 
-        Participacao participacao= participacaoService.create(mapper.fromDto(model));
+        Participacao participacao = participacaoService.create(mapper.fromDto(model));
 
         return ResponseEntity.ok(mapper.toDto(participacao));
     }
 
-    @PutMapping(value="/{id}")
-    public ResponseEntity<ParticipacaoResponse> put(@PathVariable Integer id, @RequestBody ParticipacaoCreateRequest model) {
+    @PostMapping(value = "/inscricao")
+    public ResponseEntity<ParticipacaoResponse> inscrever(@Valid @RequestBody InscricaoCreateRequest model) {
+
+        Participacao participacao = participacaoService.inscrever(mapper.fromDtoInsc(model));
+
+        return ResponseEntity.ok(mapper.toDto(participacao));
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ParticipacaoResponse> put(@PathVariable Integer id,
+            @RequestBody ParticipacaoCreateRequest model) {
         Participacao participacao = participacaoService.update(id, mapper.fromDto(model));
-        
+
         return ResponseEntity.ok(mapper.toDto(participacao));
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<ParticipacaoResponse> delete(@PathVariable Integer id) {
-    
+
         return ResponseEntity.ok(mapper.toDto(participacaoService.deleteParticipacao(id)));
-        
+
     }
 }

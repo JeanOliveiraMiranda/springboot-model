@@ -28,6 +28,11 @@ public class ParticipacaoService {
         return participacaoRepository.findAll();
     }
 
+    public Participacao inscrever(Participacao model) {
+
+        return participacaoRepository.save(model);
+    }
+
     public Participacao findById(Integer id) {
         Optional<Participacao> participacao = participacaoRepository.findById(id);
         return participacao.orElseThrow(() -> new DataNotFoundException("Participacao Not found"));
@@ -50,7 +55,7 @@ public class ParticipacaoService {
         return participacao.orElseThrow(() -> new DataNotFoundException("Participacao not found"));
     }
 
-    public Participacao deleteParticipacao(Integer id){
+    public Participacao deleteParticipacao(Integer id) {
         // verifica se id existe
         Optional<Participacao> participacao = participacaoRepository.findById(id);
 
