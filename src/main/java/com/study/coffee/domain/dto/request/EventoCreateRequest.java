@@ -2,6 +2,7 @@ package com.study.coffee.domain.dto.request;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -48,6 +49,7 @@ public class EventoCreateRequest {
     @NotEmpty(message = "O atributo descricao é obrigatório")
     private String descricao;
 
+    @Min(value = 1, message = "Deve ser maior doque ou igual a 1")
     @NotNull()
     private Integer limiteVagas;
 

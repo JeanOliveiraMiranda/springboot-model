@@ -24,10 +24,6 @@ public class EventoMapper {
         return mapper.map(input, EventoResponse.class);
     }
 
-    // public Evento fromDto(EventoCreateRequest input) {
-    // return mapper.map(input, Evento.class);
-    // }
-
     public Evento fromDto(EventoCreateRequest input) {
 
         Evento model = mapper.map(input, Evento.class);

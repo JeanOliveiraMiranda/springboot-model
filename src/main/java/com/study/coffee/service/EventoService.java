@@ -9,6 +9,7 @@ import java.util.Optional;
 import com.study.coffee.domain.entities.CategoriaEvento;
 import com.study.coffee.domain.entities.Evento; // ENTIDADE
 import com.study.coffee.repository.EventoRepository; // REPOSITÓRIO
+import com.study.coffee.exception.DataBadRequestException;
 import com.study.coffee.exception.DataNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,15 @@ public class EventoService {
 
         Date dataInicio = model.getDataInicio();
         Date dataFim = model.getDataFim();
-
         // Função que retorna se a dataFim está no mesmo dia -- LÓGICA DATAFIM
         Boolean isValid = dataFimMesmoDia(dataFim, dataInicio);
 
         if (isValid) {
             return eventoRepository.save(model);
+
         } else {
-            throw new DataNotFoundException("A data:" + dataFim
-                    + " é inválida. Selecione uma dataFim que seja no mesmo dia da dataInico:" + dataInicio);
+            throw new DataBadRequestException("A dataFim: " + dataFim
+                    + " é inválida. Selecione uma dataFim que seja no mesmo dia da dataInico: " + dataInicio);
         }
 
     }
