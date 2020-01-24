@@ -1,5 +1,6 @@
 package com.study.coffee.domain.mapper;
 
+import com.study.coffee.domain.dto.request.ConfirmacaoCreateRequest;
 import com.study.coffee.domain.dto.request.InscricaoCreateRequest;
 import com.study.coffee.domain.dto.request.ParticipacaoCreateRequest;
 import com.study.coffee.domain.dto.response.InscricaoResponse;
@@ -43,6 +44,12 @@ public class ParticipacaoMapper {
 
         evento.setIdEvento(input.getIdEvento());
         model.setIdEvento(evento);
+
+        return model;
+    }
+
+    public Participacao fromDtoConfirm(ConfirmacaoCreateRequest input) {
+        Participacao model = mapper.map(input, Participacao.class);
 
         return model;
     }

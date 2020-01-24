@@ -1,5 +1,8 @@
 package com.study.coffee.domain.dto.response;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class InscricaoResponse {
+public class ConfirmacaoResponse {
 
-    private String login;
+    @NotEmpty(message = "O atributo login é obrigatório")
+    private short flag;
 }

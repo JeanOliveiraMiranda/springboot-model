@@ -9,6 +9,7 @@ import com.study.coffee.domain.entities.Participacao;
 import com.study.coffee.repository.EventoRepository;
 import com.study.coffee.repository.ParticipacaoRepository;
 import com.study.coffee.exception.DataBadRequestException;
+import com.study.coffee.exception.DataForbiddenException;
 import com.study.coffee.exception.DataNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,36 @@ public class ParticipacaoService {
         Date hoje = new Date();
         Date dataInicio = evento.get().getDataInicio();
 
-        if(dataInicio.after(hoje)){
+        if (dataInicio.after(hoje)) {
             return participacaoRepository.save(model);
-        } else{
+        } else {
             throw new DataBadRequestException("Só pode se inscrever em eventos futuros");
         }
+    }
+
+    public Participacao confirmacaoEvento(Integer id, Participacao model) {
+        Optional<Participacao> participacao = participacaoRepository.findById(id);
+
+        // Setando ID da participação
+        model.setIdParticipacao(id);
+
+        // atualizando os demais para o mesmo
+        model.setIdEvento(participacao.get().getIdEvento());
+        model.setComentario(participacao.get().getComentario());
+        model.setLogin(participacao.get().getLogin());
+        model.setNota(participacao.get().getNota());
+        // atualiza o model
+
+        Date date = participacao.get().getIdEvento().getDataInicio();
+        Integer idStatusEvento = participacao.get().getIdEvento().getIdStatusEvento().getIdStatusEvento();
+        if (date.after(new Date()) && idStatusEvento == 3) {
+            throw new DataForbiddenException("Você não pode editar em eventos futuros");
+        } else {
+            // atualiza o banco de dados
+            participacaoRepository.save(model);
+        }
+
+        return participacao.orElseThrow(() -> new DataNotFoundException("Participacao not found"));
     }
 
     public Participacao findById(Integer id) {

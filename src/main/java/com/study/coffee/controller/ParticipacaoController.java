@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.study.coffee.domain.dto.request.ConfirmacaoCreateRequest;
 import com.study.coffee.domain.dto.request.InscricaoCreateRequest;
 import com.study.coffee.domain.dto.request.ParticipacaoCreateRequest;
 import com.study.coffee.domain.dto.response.ParticipacaoResponse;
 import com.study.coffee.domain.entities.Participacao;
-import com.study.coffee.domain.mapper.InscricaoMapper;
 import com.study.coffee.domain.mapper.ParticipacaoMapper;
 import com.study.coffee.service.ParticipacaoService;
 
@@ -67,6 +67,15 @@ public class ParticipacaoController {
     public ResponseEntity<ParticipacaoResponse> inscrever(@Valid @RequestBody InscricaoCreateRequest model) {
 
         Participacao participacao = participacaoService.inscrever(mapper.fromDtoInsc(model));
+
+        return ResponseEntity.ok(mapper.toDto(participacao));
+    }
+
+    @PutMapping(value = "/inscricao/confirmacao/{id}")
+    public ResponseEntity<ParticipacaoResponse> confirmacao(@PathVariable Integer id,
+            @RequestBody ConfirmacaoCreateRequest model) {
+
+        Participacao participacao = participacaoService.confirmacaoEvento(id, mapper.fromDtoConfirm(model));
 
         return ResponseEntity.ok(mapper.toDto(participacao));
     }
