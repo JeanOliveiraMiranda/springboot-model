@@ -1,10 +1,14 @@
 package com.study.coffee.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.study.coffee.domain.entities.Evento;
 import com.study.coffee.domain.entities.Participacao;
+import com.study.coffee.repository.EventoRepository;
 import com.study.coffee.repository.ParticipacaoRepository;
+import com.study.coffee.exception.DataBadRequestException;
 import com.study.coffee.exception.DataNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +18,13 @@ import org.springframework.stereotype.Service;
 public class ParticipacaoService {
 
     private final ParticipacaoRepository participacaoRepository;
+    private final EventoRepository eventoRepository;
 
     @Autowired
-    public ParticipacaoService(ParticipacaoRepository participacaoRepository) {
+    public ParticipacaoService(ParticipacaoRepository participacaoRepository, EventoRepository eventoRepository) {
         this.participacaoRepository = participacaoRepository;
+        this.eventoRepository = eventoRepository;
+
     }
 
     public Participacao create(Participacao model) {
@@ -29,8 +36,16 @@ public class ParticipacaoService {
     }
 
     public Participacao inscrever(Participacao model) {
+        Optional<Evento> evento = eventoRepository.findById(model.getIdEvento().getIdEvento());
 
-        return participacaoRepository.save(model);
+        Date hoje = new Date();
+        Date dataInicio = evento.get().getDataInicio();
+
+        if(dataInicio.after(hoje)){
+            return participacaoRepository.save(model);
+        } else{
+            throw new DataBadRequestException("Só pode se inscrever em eventos futuros");
+        }
     }
 
     public Participacao findById(Integer id) {
