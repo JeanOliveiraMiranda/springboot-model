@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/evento/status")
+@RequestMapping("/status")
 public class StatusEventoController {
 
     private final StatusEventoService statusEventoService;

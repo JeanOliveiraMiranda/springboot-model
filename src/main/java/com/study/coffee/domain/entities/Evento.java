@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,7 +40,8 @@ public class Evento {
     @Column(name = "Nome", nullable = false, length = 250)
     private String nome;
 
-    @Column(name = "DataHoraInicio", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DataHoraInicio", nullable = false, columnDefinition = "DATETIME")
     private Date dataInicio;
 
     @Column(name = "DataHoraFim", nullable = false)

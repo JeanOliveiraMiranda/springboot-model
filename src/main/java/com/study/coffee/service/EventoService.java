@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import com.study.coffee.domain.entities.CategoriaEvento;
 import com.study.coffee.domain.entities.Evento; // ENTIDADE
+import com.study.coffee.repository.CustomRepository;
 import com.study.coffee.repository.EventoRepository; // REPOSITÓRIO
 import com.study.coffee.exception.DataBadRequestException;
 import com.study.coffee.exception.DataNotFoundException;
@@ -85,8 +86,14 @@ public class EventoService {
 
     public List<Evento> listByIdCategoria(CategoriaEvento idCategoriaEvento, Date dataInicio) {
 
+        // Calendar date = Calendar.getInstance();
+        // date.setTime(dataInicio);
+        // String newDate = date.getWeekYear() + "-" + date.get(Calendar.MONTH) + "-" + date.get(Calendar.DAY_OF_MONTH);
+
+        // String query = "Select * from Evento where DataHoraInicio < '2020-01-26'";
+
         List<Evento> eventoByCategoria = eventoRepository.findByIdCategoriaEvento(idCategoriaEvento);
-        List<Evento> eventoByData = eventoRepository.findByDataInicio(dataInicio);
+        List<Evento> eventoByData = eventoRepository.filterByData(dataInicio);
 
         List<Evento> newList = new ArrayList<Evento>(eventoByCategoria);
         newList.addAll(eventoByData);
