@@ -30,7 +30,7 @@ public class CategoriaEventoService {
 
     public CategoriaEvento findById(Integer id) {
         Optional<CategoriaEvento> res = categoriaEventoRepository.findById(id);
-        return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
+        return res.orElseThrow(() -> new DataNotFoundException("CategoriaEvento Not found"));
     }
 
     public CategoriaEvento update(Integer id, CategoriaEvento model) {

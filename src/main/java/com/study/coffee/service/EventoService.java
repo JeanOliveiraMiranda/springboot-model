@@ -48,7 +48,7 @@ public class EventoService {
 
     public Evento findById(Integer id) {
         Optional<Evento> evento = eventoRepository.findById(id);
-        return evento.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
+        return evento.orElseThrow(() -> new DataNotFoundException("Evento Not found"));
     }
 
     public Evento updateEvento(Integer id, Evento model) {
@@ -71,7 +71,7 @@ public class EventoService {
             }
         }
 
-        return evento.orElseThrow(() -> new DataNotFoundException("Evento" + id + "not encontrado"));
+        return evento.orElseThrow(() -> new DataNotFoundException("Evento Not found"));
 
     }
 
@@ -80,7 +80,7 @@ public class EventoService {
 
         eventoRepository.deleteById(id);
 
-        return evento.orElseThrow(() -> new DataNotFoundException("Evento" + id + "not encontrado"));
+        return evento.orElseThrow(() -> new DataNotFoundException("Evento Not found"));
     }
 
     public List<Evento> listByIdCategoria(CategoriaEvento idCategoriaEvento, Date dataInicio) {

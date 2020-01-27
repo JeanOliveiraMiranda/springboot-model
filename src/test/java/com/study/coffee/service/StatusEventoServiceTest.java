@@ -8,9 +8,9 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import com.study.coffee.domain.entities.Client;
+import com.study.coffee.domain.entities.StatusEvento;
 import com.study.coffee.exception.DataNotFoundException;
-import com.study.coffee.repository.ClientRepository;
+import com.study.coffee.repository.StatusEventoRepository;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,25 +21,24 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 /**
- * ClientServiceTest
+ * StatusEventoServiceTest
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ClientServiceTest {
+public class StatusEventoServiceTest {
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
 
     @Mock
-    private ClientRepository repositoryMock;
+    private StatusEventoRepository repositoryMock;
 
     @InjectMocks
-    private ClientService service;
+    private StatusEventoService service;
 
-    private final Integer id = 1;
-    private final String name = "Some string";
-    private final String phone = "987654321";
+    private final Integer idStatusEvento = 6;
+    private final String nome = "Aberto para Inscrições";
 
-    Client entity = Client.builder().id(id).name(name).phone(phone).build();
+    StatusEvento entity = StatusEvento.builder().idStatusEvento(idStatusEvento).nome(nome).build();
 
     @Test
     public void should_ThrowDataNotFoundException_whenNotFound() {
@@ -48,22 +47,21 @@ public class ClientServiceTest {
 
         // then
         expected.expect(DataNotFoundException.class);
-        expected.expectMessage("Client Not found");
+        expected.expectMessage("StatusEvento Not found");
 
         // when
         service.findById(1);
     }
 
     @Test
-    public void should_CreateClient() {
+    public void should_CreateStatusEvento() {
         // given
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
-
         // when
-        Client model = service.findById(anyInt());
-        service.createClient(repositoryMock.save(model));
+        StatusEvento model = service.findById(anyInt());
+        service.create(repositoryMock.save(model));
 
-        // then
+        // // then
         verify(repositoryMock, times(1)).findById(anyInt());
         assertNotNull("Model não esperado!", model);
     }
@@ -75,60 +73,61 @@ public class ClientServiceTest {
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
 
         // when
-        Client model = service.findById(anyInt());
+        StatusEvento model = service.findById(anyInt());
 
         // then
         verify(repositoryMock, times(1)).findById(anyInt());
-        assertNotNull("Client deve ser encontrado!", model);
+        assertNotNull("StatusEvento deve ser encontrado!", model);
     }
 
     @Test
-    public void should_UpdateClient() {
+    public void should_UpdateStatusEvento() {
 
         // given
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
 
         // when
-        Client model = service.findById(anyInt());
-        model.setId(anyInt());
-        service.createClient(repositoryMock.save(model));
+        StatusEvento model = service.findById(anyInt());
+        model.setIdStatusEvento(anyInt());
+        service.create(repositoryMock.save(model));
 
         // then
         verify(repositoryMock, times(1)).findById(anyInt());
-        assertNotNull("Client deve ser encontrado!", model);
+        assertNotNull("StatusEvento deve ser encontrado!", model);
     }
 
     @Test
-    public void should_DeleteCliente() {
+    public void should_DeleteStatusEvento() {
         // given
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
 
         // when
-        Client model = service.findById(anyInt());
-        model.setId(anyInt());
+        StatusEvento model = service.findById(anyInt());
+        model.setIdStatusEvento(anyInt());
 
-        Integer id = model.getId();
-        service.delete(id);
+        Integer id = model.getIdStatusEvento();
+        service.deleteStatusEvento(id);
 
         // then
         verify(repositoryMock, times(2)).findById(anyInt());
-        assertNotNull("Client deve ser encontrado!", model);
+        assertNotNull("StatusEvento deve ser encontrado!", model);
     }
 
+    // Dá erro de NUllPointer
     // @Test
     // public void should_ListOneItem() {
-    //     List<Client> list = new ArrayList<>();
+    //     List<StatusEvento> list = new ArrayList<>();
     //     list.add(entity);
     //     when(repositoryMock.findAll()).thenReturn(list);
 
-    //     List<Client> listR = service.listClient();
+    //     List<StatusEvento> listR = service.list();
 
     //     VerifyError(repositoryMock, times(2)).findAll();
     //     assertNotNull("Array não deve ser nulo", listR);
     //     assertEquals("Array deve ser de tamanho 1", 1, listR.size());
     // }
 
-    // private JpaRepository<Client, Integer> VerifyError(ClientRepository repositoryMock2, VerificationMode times) {
+    // private JpaRepository<StatusEvento, Integer> VerifyError(StatusEventoRepository repositoryMock2, VerificationMode times) {
     //     return null;
     // }
 

@@ -29,8 +29,8 @@ public class StatusEventoService {
     }
 
     public StatusEvento findById(Integer id) {
-        Optional<StatusEvento> res = statusEventoRepository.findById(id);
-        return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
+        Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
     }
 
     public StatusEvento update(Integer id, StatusEvento model) {
@@ -57,7 +57,7 @@ public class StatusEventoService {
 
         statusEventoRepository.deleteById(id);
 
-        return statusEvento.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
 
     }
 
