@@ -60,11 +60,6 @@ public class EventoController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/distinct")
-    public ResponseEntity<List<String>> listDistinct() {
-        return ResponseEntity.ok(eventoService.listDistinct());
-    }
-
     @PostMapping
     public ResponseEntity<EventoResponse> post(@Valid @RequestBody EventoCreateRequest model) {
 

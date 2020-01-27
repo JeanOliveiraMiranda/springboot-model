@@ -76,11 +76,9 @@ public class ParticipacaoService {
 
     public Participacao findById(Integer id) {
         Optional<Participacao> participacao = participacaoRepository.findById(id);
+        
+        
         return participacao.orElseThrow(() -> new DataNotFoundException("Participacao Not found"));
-    }
-
-    public List<String> listDistinct() {
-        return participacaoRepository.listDistinct();
     }
 
     public Participacao update(Integer id, Participacao model) {

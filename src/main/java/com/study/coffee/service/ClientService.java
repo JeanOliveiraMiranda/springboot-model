@@ -55,7 +55,4 @@ public class ClientService {
 
     }
 
-    public List<String> listDistinct() {
-        return clientRepository.listDistinct();
-    }
 }

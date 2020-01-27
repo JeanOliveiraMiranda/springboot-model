@@ -51,10 +51,6 @@ public class EventoService {
         return evento.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
     }
 
-    public List<String> listDistinct() {
-        return eventoRepository.listDistinct();
-    }
-
     public Evento updateEvento(Integer id, Evento model) {
         Optional<Evento> evento = eventoRepository.findById(id);
 

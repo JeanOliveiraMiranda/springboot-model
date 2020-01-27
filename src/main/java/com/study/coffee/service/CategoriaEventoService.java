@@ -33,10 +33,6 @@ public class CategoriaEventoService {
         return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
     }
 
-    public List<String> listDistinct() {
-        return categoriaEventoRepository.listDistinct();
-    }
-
     public CategoriaEvento update(Integer id, CategoriaEvento model) {
         
         Optional<CategoriaEvento> categoriaEvento = categoriaEventoRepository.findById(id);

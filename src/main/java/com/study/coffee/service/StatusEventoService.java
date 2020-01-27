@@ -33,10 +33,6 @@ public class StatusEventoService {
         return res.orElseThrow(() -> new DataNotFoundException("StatusEvento Not found"));
     }
 
-    public List<String> listDistinct() {
-        return statusEventoRepository.listDistinct();
-    }
-
     public StatusEvento update(Integer id, StatusEvento model) {
         Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
 

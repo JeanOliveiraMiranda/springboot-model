@@ -48,11 +48,6 @@ public class CategoriaEventoController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/distinct")
-    public ResponseEntity<List<String>> listDistinct() {
-        return ResponseEntity.ok(categoriaEventoService.listDistinct());
-    }
-
     @PostMapping
     public ResponseEntity<CategoriaEventoResponse> post(@Valid @RequestBody CategoriaEventoCreateRequest model) {
 

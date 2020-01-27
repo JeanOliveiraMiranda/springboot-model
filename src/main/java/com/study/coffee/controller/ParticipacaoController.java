@@ -50,11 +50,6 @@ public class ParticipacaoController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/distinct")
-    public ResponseEntity<List<String>> listDistinct() {
-        return ResponseEntity.ok(participacaoService.listDistinct());
-    }
-
     @PostMapping
     public ResponseEntity<ParticipacaoResponse> post(@Valid @RequestBody ParticipacaoCreateRequest model) {
 

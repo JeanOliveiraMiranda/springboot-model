@@ -131,8 +131,8 @@ public class ClientServiceTest {
     //     assertEquals("Array deve ser de tamanho 1", 1, listR.size());
     // }
 
-    private JpaRepository<Client, Integer> VerifyError(ClientRepository repositoryMock2, VerificationMode times) {
-        return null;
-    }
+    // private JpaRepository<Client, Integer> VerifyError(ClientRepository repositoryMock2, VerificationMode times) {
+    //     return null;
+    // }
 
 }

@@ -49,11 +49,6 @@ public class StatusEventoController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/distinct")
-    public ResponseEntity<List<String>> listDistinct() {
-        return ResponseEntity.ok(statusEventoService.listDistinct());
-    }
-
     @PostMapping
     public ResponseEntity<StatusEventoResponse> post(@Valid @RequestBody StatusEventoCreateRequest model) {
 
