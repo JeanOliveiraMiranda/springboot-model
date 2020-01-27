@@ -64,11 +64,15 @@ public class ParticipacaoService {
 
         Date date = participacao.get().getIdEvento().getDataInicio();
         Integer idStatusEvento = participacao.get().getIdEvento().getIdStatusEvento().getIdStatusEvento();
-        if (date.after(new Date()) && idStatusEvento == 3) {
+        if (date.after(new Date())) {
             throw new DataForbiddenException("Você não pode editar em eventos futuros");
         } else {
-            // atualiza o banco de dados
-            participacaoRepository.save(model);
+            if (idStatusEvento == 3 || idStatusEvento == 4) {
+                participacaoRepository.save(model);
+
+            } else {
+                throw new DataForbiddenException("O evento precisa estar concluído para poder confirmar participação");
+            }
         }
 
         return participacao.orElseThrow(() -> new DataNotFoundException("Participacao not found"));
@@ -76,8 +80,7 @@ public class ParticipacaoService {
 
     public Participacao findById(Integer id) {
         Optional<Participacao> participacao = participacaoRepository.findById(id);
-        
-        
+
         return participacao.orElseThrow(() -> new DataNotFoundException("Participacao Not found"));
     }
 
