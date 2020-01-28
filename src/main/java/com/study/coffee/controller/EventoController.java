@@ -54,7 +54,7 @@ public class EventoController {
     @GetMapping(value = "/filtrar")
     public ResponseEntity<List<EventoResponse>> list(
             @RequestParam(value = "idCategoriaEvento", required = false) CategoriaEvento idCategoriaEvento,
-            @RequestParam(value = "dataInicio", required = false) @DateTimeFormat(pattern = "yyyy-dd-mm") Date dataInicio) {
+            @RequestParam(value = "dataInicio", required = false) @DateTimeFormat(pattern = "yyyy-mm-dd") Date dataInicio) {
         return ResponseEntity.ok(eventoService.listByIdCategoria(idCategoriaEvento, dataInicio).stream() //
                 .map(x -> mapper.toDto(x)) //
                 .collect(Collectors.toList()));
