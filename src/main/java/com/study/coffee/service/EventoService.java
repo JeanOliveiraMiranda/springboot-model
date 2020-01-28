@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import com.study.coffee.domain.entities.CategoriaEvento;
 import com.study.coffee.domain.entities.Evento; // ENTIDADE
-import com.study.coffee.repository.CustomRepository;
 import com.study.coffee.repository.EventoRepository; // REPOSITÓRIO
 import com.study.coffee.exception.DataBadRequestException;
 import com.study.coffee.exception.DataNotFoundException;

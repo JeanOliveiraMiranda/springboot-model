@@ -1,16 +1,12 @@
 package com.study.coffee.service;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 import com.study.coffee.domain.entities.CategoriaEvento;
@@ -18,10 +14,7 @@ import com.study.coffee.domain.entities.Evento;
 import com.study.coffee.domain.entities.Participacao;
 import com.study.coffee.domain.entities.StatusEvento;
 import com.study.coffee.exception.DataNotFoundException;
-import com.study.coffee.repository.CategoriaEventoRepository;
-import com.study.coffee.repository.EventoRepository;
 import com.study.coffee.repository.ParticipacaoRepository;
-import com.study.coffee.repository.StatusEventoRepository;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -31,8 +24,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.verification.VerificationMode;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * ParticipacaoServiceTest
